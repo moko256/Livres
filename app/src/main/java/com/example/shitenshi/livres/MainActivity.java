@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -140,18 +141,7 @@ public class MainActivity extends AppCompatActivity {
             if (toggleswitch) {
                 long time = l.get(i).time;
                 Date data = new Date(time);
-                String listdata = data.toString();
-                String [] spdata = listdata.split(" ",0);
-                String viewdata = spdata[5]
-                                  +" "
-                                  +spdata[1]
-                                  +" "
-                                  +spdata[2]
-                                  +" "
-                                  +spdata[0]
-                                  +" "
-                                  +spdata[3];
-                stringBuilder.append("\n").append(viewdata);
+                stringBuilder.append("\n").append(SimpleDateFormat.getDateTimeInstance().format(data));
             }
 
             column[i] = stringBuilder.toString();
