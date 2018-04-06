@@ -8,6 +8,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class ListInfoActivity extends AppCompatActivity {
 
     @Override
@@ -25,10 +29,10 @@ public class ListInfoActivity extends AppCompatActivity {
         TextView name = findViewById(R.id.textView4);
         TextView price = findViewById(R.id.textView5);
 
-        time.setText(String.valueOf(info.time));
-        category.setText(info.category);
+        time.setText(SimpleDateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG).format(new Date(info.time)));
+        category.setText(info.category.equals("income")?R.string.incoming:R.string.outgoing);
         name.setText(info.productname);
-        price.setText(String.valueOf(info.price));
+        price.setText(getString(R.string.yen, info.price));
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
